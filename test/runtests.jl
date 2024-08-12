@@ -13,30 +13,42 @@ function test_aqua()
 end
 
 function test_decoder()
-    @test decode("snake_case") == ["snake", "case"]
     @test decode("camelCase") == ["camel", "case"]
+    @test decode("kebab-case") == ["kebab", "case"]
     @test decode("PascalCase") == ["pascal", "case"]
+    @test decode("snake_case") == ["snake", "case"]
     return nothing
 end
 
 function test_camel_case()
-    @test to_camel_case("snake_case") == "snakeCase"
     @test to_camel_case("camelCase") == "camelCase"
+    @test to_camel_case("kebab-case") == "kebabCase"
     @test to_camel_case("PascalCase") == "pascalCase"
+    @test to_camel_case("snake_case") == "snakeCase"
+    return nothing
+end
+
+function test_kebab_case()
+    @test to_kebab_case("camelCase") == "camel-case"
+    @test to_kebab_case("kebab-case") == "kebab-case"
+    @test to_kebab_case("PascalCase") == "pascal-case"
+    @test to_kebab_case("snake_case") == "snake-case"
     return nothing
 end
 
 function test_pascal_case()
-    @test to_pascal_case("snake_case") == "SnakeCase"
     @test to_pascal_case("camelCase") == "CamelCase"
+    @test to_pascal_case("kebab-case") == "KebabCase"
     @test to_pascal_case("PascalCase") == "PascalCase"
+    @test to_pascal_case("snake_case") == "SnakeCase"
     return nothing
 end
 
 function test_snake_case()
-    @test to_snake_case("snake_case") == "snake_case"
     @test to_snake_case("camelCase") == "camel_case"
+    @test to_snake_case("kebab-case") == "kebab_case"
     @test to_snake_case("PascalCase") == "pascal_case"
+    @test to_snake_case("snake_case") == "snake_case"
     return nothing
 end
 
@@ -51,6 +63,10 @@ function test_all()
 
     @testset "camel case" begin
         test_camel_case()
+    end
+
+    @testset "kebab case" begin
+        test_kebab_case()
     end
 
     @testset "pascal case" begin
