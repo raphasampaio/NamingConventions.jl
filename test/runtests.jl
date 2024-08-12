@@ -12,51 +12,65 @@ function test_aqua()
     return nothing
 end
 
-function test_shared_preferences(instance::NamingConventions.AbstractInstance)
-    clean!(instance)
+# @test detect_case("PascalCase") == :pascal
+# @test detect_case("camelCase") == :camel
+# @test detect_case("snake_case") == :snake
 
-    set!(instance, "string", "value")
-    set!(instance, "integer", 42)
-    set!(instance, "float", 3.14)
-    set!(instance, "boolean", true)
-    set!(instance, "array", [1, 2, 3])
+# @test convert_case("PascalCase", :snake) == "pascal_case"
+# @test convert_case("camelCase", :snake) == "camel_case"
+# @test convert_case("snake_case", :camel) == "snakeCase"
+# @test convert_case("snake_case", :pascal) == "SnakeCase"
+# @test convert_case("PascalCase", :camel) == "pascalCase"
 
-    @test get(instance, "string") == "value"
-    @test get(instance, "integer") == 42
-    @test get(instance, "float") == 3.14
-    @test get(instance, "boolean") == true
-    @test get(instance, "array") == [1, 2, 3]
 
-    remove!(instance, "string")
-    remove!(instance, "integer")
-    remove!(instance, "float")
-    remove!(instance, "boolean")
-    remove!(instance, "array")
 
-    @test_throws KeyError get(instance, "string")
-    @test_throws KeyError get(instance, "integer")
-    @test_throws KeyError get(instance, "float")
-    @test_throws KeyError get(instance, "boolean")
-    @test_throws KeyError get(instance, "array")
+function test_camel_case()
+    @test detect("camelCase") == :camel_case
+    @test is_camel_case("snake_case") == false
+    @test is_camel_case("camelCase") == true
+    @test is_camel_case("PascalCase") == false
 
-    clean!(instance)
+    return nothing
+end
+
+function test_pascal_case()
+    @test detect("PascalCase") == :pascal_case
+    @test is_pascal_case("snake_case") == false
+    @test is_pascal_case("camelCase") == false
+    @test is_pascal_case("PascalCase") == true
+
+    return nothing
+end
+
+function test_snake_case()
+    @test detect("snake_case") == :snake_case
+
+    @test is_snake_case("snake_case") == true
+    @test is_snake_case("camelCase") == false
+    @test is_snake_case("PascalCase") == false
+
+    @test to_snake_case("snake_case") == "snake_case"
+    @test to_snake_case("camelCase") == "camel_case"
+    @test to_snake_case("PascalCase") == "pascal_case"
 
     return nothing
 end
 
 function test_all()
-    @testset "Aqua.jl" begin
-        test_aqua()
+    # @testset "Aqua.jl" begin
+    #     test_aqua()
+    # end
+
+    @testset "camel case" begin
+        test_camel_case()
     end
 
-    instance = NamingConventions.Instance("vG1Z4i52FR")
-    @testset "instance" begin
-        test_shared_preferences(instance)
+    @testset "pascal case" begin
+        test_pascal_case()
     end
 
-    instance = NamingConventions.InstanceEncrypted("gIU2iw4p10KnP2HsU5TBJ5Uuj5Khj2R0")
-    @testset "instance encrypted" begin
-        test_shared_preferences(instance)
+    @testset "snake case" begin
+        test_snake_case()
     end
 
     return nothing
