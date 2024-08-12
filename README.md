@@ -24,6 +24,14 @@
 
 ## Introduction
 
+This package provides a set of functions to convert between different naming conventions. The following naming conventions are supported:
+
+- camelCase
+- snake_case
+- kebab-case
+- PascalCase
+- SCREAMING_SNAKE_CASE
+
 ## Getting Started
 
 ### Installation
@@ -35,5 +43,11 @@ julia> ] add NamingConventions
 ### Example
 ```julia
 using NamingConventions
+
+# Convert from snake_case to camelCase
+@show to_camel_case("snake_case") # "snakeCase"
+
+# Convert from camelCase to snake_case
+@show to_snake_case("camelCase") # "camel_case"
 
 ```
