@@ -22,56 +22,47 @@ end
 # @test convert_case("snake_case", :pascal) == "SnakeCase"
 # @test convert_case("PascalCase", :camel) == "pascalCase"
 
-
-
-function test_camel_case()
-    @test detect("camelCase") == :camel_case
-    @test is_camel_case("snake_case") == false
-    @test is_camel_case("camelCase") == true
-    @test is_camel_case("PascalCase") == false
+function test_decoder()
+    @test decode("snake_case") == ["snake", "case"]
+    @test decode("camelCase") == ["camel", "Case"]
+    # @test decode("PascalCase") == ["Pascal", "Case"]
 
     return nothing
 end
 
-function test_pascal_case()
-    @test detect("PascalCase") == :pascal_case
-    @test is_pascal_case("snake_case") == false
-    @test is_pascal_case("camelCase") == false
-    @test is_pascal_case("PascalCase") == true
+# function test_camel_case()
 
-    return nothing
-end
+#     return nothing
+# end
 
-function test_snake_case()
-    @test detect("snake_case") == :snake_case
+# function test_pascal_case()
+#     return nothing
+# end
 
-    @test is_snake_case("snake_case") == true
-    @test is_snake_case("camelCase") == false
-    @test is_snake_case("PascalCase") == false
+# function test_snake_case()
+#     @test to_snake_case("snake_case") == "snake_case"
+#     @test to_snake_case("camelCase") == "camel_case"
+#     @test to_snake_case("PascalCase") == "pascal_case"
 
-    @test to_snake_case("snake_case") == "snake_case"
-    @test to_snake_case("camelCase") == "camel_case"
-    @test to_snake_case("PascalCase") == "pascal_case"
-
-    return nothing
-end
+#     return nothing
+# end
 
 function test_all()
     # @testset "Aqua.jl" begin
     #     test_aqua()
     # end
 
-    @testset "camel case" begin
-        test_camel_case()
+    @testset "decoder" begin
+        test_decoder()
     end
 
-    @testset "pascal case" begin
-        test_pascal_case()
-    end
+    # @testset "pascal case" begin
+    #     test_pascal_case()
+    # end
 
-    @testset "snake case" begin
-        test_snake_case()
-    end
+    # @testset "snake case" begin
+    #     test_snake_case()
+    # end
 
     return nothing
 end

@@ -1,6 +1,4 @@
-function is_snake_case(s::AbstractString)
-    return occursin(r"^[a-z0-9]+(_[a-z0-9]+)*$", s)
-end
+
 
 function to_snake_case(s::AbstractString)
     current_case = detect(s)
