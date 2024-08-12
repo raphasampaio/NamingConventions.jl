@@ -14,6 +14,10 @@ function decode(::Type{PascalCase}, s::AbstractString)::Vector{String}
     return lowercase.(split(s, r"(?<=[a-z])(?=[A-Z])|(?<=[A-Z])(?=[A-Z][a-z])"))
 end
 
+function decode(::Type{ScreamingSnakeCase}, s::AbstractString)::Vector{String}
+    return lowercase.(split(s, '_'))
+end
+
 function decode(::Type{SnakeCase}, s::AbstractString)::Vector{String}
     return lowercase.(split(s, '_'))
 end
