@@ -67,9 +67,9 @@ function test_snake_case()
 end
 
 function test_all()
-    # @testset "Aqua.jl" begin
-    #     test_aqua()
-    # end
+    @testset "Aqua.jl" begin
+        test_aqua()
+    end
 
     @testset "decoder" begin
         test_decoder()
