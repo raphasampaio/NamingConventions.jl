@@ -1,14 +1,14 @@
 module NamingConventions
 
-# include("camel_case.jl")
-# include("pascal_case.jl")
-# include("snake_case.jl")
+include("abstract.jl")
+include("detect.jl")
 include("decoder.jl")
 include("encoder.jl")
-include("detect.jl")
 
 export detect,
-    decode
-
+    decode,
+    to_snake_case,
+    to_camel_case,
+    to_pascal_case
 
 end

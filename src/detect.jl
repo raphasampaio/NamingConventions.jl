@@ -1,4 +1,4 @@
-function is_camel_case(s::String)
+function is_camel_case(s::AbstractString)
     return occursin(r"^[a-z]+([A-Z][a-z0-9]*)*$", s)
 end
 
@@ -12,11 +12,11 @@ end
 
 function detect(s::AbstractString)
     if is_pascal_case(s)
-        return :pascal_case
+        return PascalCase
     elseif is_camel_case(s)
-        return :camel_case
+        return CamelCase
     elseif is_snake_case(s)
-        return :snake_case
+        return SnakeCase
     else
         error("Unknown case format")
     end

@@ -25,27 +25,30 @@ end
 function test_decoder()
     @test decode("snake_case") == ["snake", "case"]
     @test decode("camelCase") == ["camel", "Case"]
-    # @test decode("PascalCase") == ["Pascal", "Case"]
-
+    @test decode("PascalCase") == ["Pascal", "Case"]
     return nothing
 end
 
-# function test_camel_case()
+function test_camel_case()
+    @test to_camel_case("snake_case") == "snakeCase"
+    @test to_camel_case("camelCase") == "camelCase"
+    @test to_camel_case("PascalCase") == "pascalCase"
+    return nothing
+end
 
-#     return nothing
-# end
+function test_pascal_case()
+    @test to_pascal_case("snake_case") == "SnakeCase"
+    @test to_pascal_case("camelCase") == "CamelCase"
+    @test to_pascal_case("PascalCase") == "PascalCase"
+    return nothing
+end
 
-# function test_pascal_case()
-#     return nothing
-# end
-
-# function test_snake_case()
-#     @test to_snake_case("snake_case") == "snake_case"
-#     @test to_snake_case("camelCase") == "camel_case"
-#     @test to_snake_case("PascalCase") == "pascal_case"
-
-#     return nothing
-# end
+function test_snake_case()
+    @test to_snake_case("snake_case") == "snake_case"
+    @test to_snake_case("camelCase") == "camel_case"
+    @test to_snake_case("PascalCase") == "pascal_case"
+    return nothing
+end
 
 function test_all()
     # @testset "Aqua.jl" begin
@@ -56,9 +59,17 @@ function test_all()
         test_decoder()
     end
 
-    # @testset "pascal case" begin
-    #     test_pascal_case()
-    # end
+    @testset "camel case" begin
+        test_camel_case()
+    end
+    
+    @testset "pascal case" begin
+        test_pascal_case()
+    end
+
+    @testset "snake case" begin
+        test_snake_case()
+    end
 
     # @testset "snake case" begin
     #     test_snake_case()
