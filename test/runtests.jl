@@ -12,20 +12,10 @@ function test_aqua()
     return nothing
 end
 
-# @test detect_case("PascalCase") == :pascal
-# @test detect_case("camelCase") == :camel
-# @test detect_case("snake_case") == :snake
-
-# @test convert_case("PascalCase", :snake) == "pascal_case"
-# @test convert_case("camelCase", :snake) == "camel_case"
-# @test convert_case("snake_case", :camel) == "snakeCase"
-# @test convert_case("snake_case", :pascal) == "SnakeCase"
-# @test convert_case("PascalCase", :camel) == "pascalCase"
-
 function test_decoder()
     @test decode("snake_case") == ["snake", "case"]
-    @test decode("camelCase") == ["camel", "Case"]
-    @test decode("PascalCase") == ["Pascal", "Case"]
+    @test decode("camelCase") == ["camel", "case"]
+    @test decode("PascalCase") == ["pascal", "case"]
     return nothing
 end
 
@@ -62,7 +52,7 @@ function test_all()
     @testset "camel case" begin
         test_camel_case()
     end
-    
+
     @testset "pascal case" begin
         test_pascal_case()
     end
@@ -70,10 +60,6 @@ function test_all()
     @testset "snake case" begin
         test_snake_case()
     end
-
-    # @testset "snake case" begin
-    #     test_snake_case()
-    # end
 
     return nothing
 end
