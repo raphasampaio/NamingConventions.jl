@@ -35,5 +35,5 @@ function detect(s::AbstractString)
         end
     end
 
-    throw(InvalidNamingNamingConvention())
+    throw(InvalidNamingConvention())
 end
