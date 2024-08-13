@@ -4,13 +4,14 @@ include("abstract.jl")
 include("detect.jl")
 include("decoder.jl")
 include("encoder.jl")
+include("convert.jl")
 
 export detect,
     decode,
-    to_camel_case,
-    to_kebab_case,
-    to_pascal_case,
-    to_screaming_snake_case,
-    to_snake_case
+    CamelCase,
+    PascalCase,
+    ScreamingSnakeCase,
+    SnakeCase,
+    KebabCase
 
 end
