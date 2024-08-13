@@ -18,6 +18,9 @@ function test_decoder()
     @test decode("PascalCase") == ["pascal", "case"]
     @test decode("SCREAMING_SNAKE_CASE") == ["screaming", "snake", "case"]
     @test decode("snake_case") == ["snake", "case"]
+
+    @test_throws InvalidNamingConvention decode("camelCase-snake_case")
+
     return nothing
 end
 

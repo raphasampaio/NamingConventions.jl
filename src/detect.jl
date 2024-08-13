@@ -18,8 +18,16 @@ function is(::Type{SnakeCase}, s::AbstractString)
     return occursin(r"^[a-z0-9]+(_[a-z0-9]+)*$", s)
 end
 
+struct InvalidNamingConvention <: Exception end
+
 function detect(s::AbstractString)
-    subtypes = [CamelCase, KebabCase, PascalCase, ScreamingSnakeCase, SnakeCase]
+    subtypes = [
+        CamelCase,
+        KebabCase,
+        PascalCase,
+        ScreamingSnakeCase,
+        SnakeCase,
+    ]
 
     for subtype in subtypes
         if is(subtype, s)
@@ -27,6 +35,5 @@ function detect(s::AbstractString)
         end
     end
 
-    error("Unknown case format")
-    return nothing
+    throw(InvalidNamingNamingConvention())
 end

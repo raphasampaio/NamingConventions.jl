@@ -12,6 +12,7 @@ export detect,
     PascalCase,
     ScreamingSnakeCase,
     SnakeCase,
-    KebabCase
+    KebabCase,
+    InvalidNamingConvention
 
 end
