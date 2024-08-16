@@ -29,9 +29,9 @@ julia> ] add NamingConventions
 using NamingConventions
 
 # Explicitly convert from snake_case to camelCase
-@show convert(SnakeCase, CamelCase, "snake_case") # "snakeCase"
+@show NamingConventions.convert(SnakeCase, CamelCase, "snake_case") # "snakeCase"
 
 # Implicitly convert from snake_case to camelCase
-@show convert(CamelCase, "snake_case") # "snakeCase"
+@show NamingConventions.convert(CamelCase, "snake_case") # "snakeCase"
 
 ```
