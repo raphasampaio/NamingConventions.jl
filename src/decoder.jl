@@ -1,7 +1,3 @@
-function decode(s::AbstractString)::Vector{String}
-    return decode(detect(s), s)
-end
-
 function decode(::Type{CamelCase}, s::AbstractString)::Vector{String}
     return lowercase.(split(s, r"(?<=[a-z])(?=[A-Z])"))
 end

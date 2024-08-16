@@ -1,12 +1,11 @@
 module NamingConventions
 
 include("abstract.jl")
-include("detect.jl")
 include("decoder.jl")
 include("encoder.jl")
 include("convert.jl")
 
-export detect,
+export
     decode,
     encode,
     AbstractNamingConvention,
@@ -15,7 +14,6 @@ export detect,
     KebabCase,
     PascalCase,
     ScreamingSnakeCase,
-    SnakeCase,
-    InvalidNamingConvention
+    SnakeCase
 
 end
