@@ -10,6 +10,7 @@
 This package provides a set of functions to convert between different naming conventions. The following naming conventions are supported:
 
 - camelCase
+- flatcase
 - kebab-case
 - PascalCase
 - SCREAMING_SNAKE_CASE
@@ -23,7 +24,7 @@ This package provides a set of functions to convert between different naming con
 julia> ] add NamingConventions
 ```
 
-### Example
+### Example: converting between naming conventions
 
 ```julia
 using NamingConventions
@@ -33,5 +34,4 @@ using NamingConventions
 
 # Implicitly convert from snake_case to camelCase
 @show NamingConventions.convert(CamelCase, "snake_case") # "snakeCase"
-
 ```

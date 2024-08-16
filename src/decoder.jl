@@ -6,6 +6,10 @@ function decode(::Type{CamelCase}, s::AbstractString)::Vector{String}
     return lowercase.(split(s, r"(?<=[a-z])(?=[A-Z])"))
 end
 
+function decode(::Type{FlatCase}, s::AbstractString)::Vector{String}
+    return lowercase.(split(s, ' '))
+end
+
 function decode(::Type{KebabCase}, s::AbstractString)::Vector{String}
     return lowercase.(split(s, '-'))
 end

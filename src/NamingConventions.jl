@@ -8,11 +8,14 @@ include("convert.jl")
 
 export detect,
     decode,
+    encode,
+    AbstractNamingConvention,
     CamelCase,
+    FlatCase,
+    KebabCase,
     PascalCase,
     ScreamingSnakeCase,
     SnakeCase,
-    KebabCase,
     InvalidNamingConvention
 
 end

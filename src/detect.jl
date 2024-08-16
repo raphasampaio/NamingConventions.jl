@@ -2,6 +2,10 @@ function is(::Type{CamelCase}, s::AbstractString)
     return occursin(r"^[a-z]+([A-Z][a-z0-9]*)*$", s)
 end
 
+function is(::Type{FlatCase}, s::AbstractString)
+    return occursin(r"^[a-z]+( [a-z0-9]+)*$", s)
+end
+
 function is(::Type{KebabCase}, s::AbstractString)
     return occursin(r"^[a-z]+(-[a-z0-9]+)*$", s)
 end
@@ -23,6 +27,7 @@ struct InvalidNamingConvention <: Exception end
 function detect(s::AbstractString)
     subtypes = [
         CamelCase,
+        FlatCase,
         KebabCase,
         PascalCase,
         ScreamingSnakeCase,
