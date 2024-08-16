@@ -48,11 +48,11 @@ using NamingConventions
 
 struct ReversePascalCase <: AbstractNamingConvention end
 
-function NamingConventions.encode(::Type{ReversePascalCase}, v::AbstractVector{<:AbstractString})::String
+function NamingConventions.encode(::Type{ReversePascalCase}, v)
     return join([lowercase(first(s)) * uppercase(s[2:end]) for s in v], "")
 end
 
-function NamingConventions.decode(::Type{ReversePascalCase}, s::AbstractString)::Vector{String}
+function NamingConventions.decode(::Type{ReversePascalCase}, s)
     return lowercase.(split(s, r"(?<=[A-Z])(?=[a-z])|(?<=[a-z])(?=[a-z][A-Z])"))
 end
 
