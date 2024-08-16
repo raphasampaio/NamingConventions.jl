@@ -11,4 +11,3 @@ struct PascalCase <: AbstractNamingConvention end
 struct ScreamingSnakeCase <: AbstractNamingConvention end
 
 struct SnakeCase <: AbstractNamingConvention end
-

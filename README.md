@@ -29,9 +29,31 @@ julia> ] add NamingConventions
 ```julia
 using NamingConventions
 
-# Explicitly convert from snake_case to camelCase
+# convert from snake_case to camelCase
 @show NamingConventions.convert(SnakeCase, CamelCase, "snake_case") # "snakeCase"
 
-# Implicitly convert from snake_case to camelCase
-@show NamingConventions.convert(CamelCase, "snake_case") # "snakeCase"
+# convert from camelCase to kebab-case
+@show NamingConventions.convert(CamelCase, KebabCase, "camelCase") # "camel-case"
+
+# convert from kebab-case to PascalCase
+@show NamingConventions.convert(KebabCase, PascalCase, "kebab-case") # "KebabCase"
+```
+
+### Example: creating a custom naming convention
+
+```julia
+using NamingConventions
+
+struct ReversePascalCase <: AbstractNamingConvention end
+
+function NamingConventions.encode(::Type{ReversePascalCase}, v::AbstractVector{<:AbstractString})::String
+    return join([lowercase(first(s)) * uppercase(s[2:end]) for s in v], "")
+end
+
+function NamingConventions.decode(::Type{ReversePascalCase}, s::AbstractString)::Vector{String}
+    return lowercase.(split(s, r"(?<=[A-Z])(?=[a-z])|(?<=[a-z])(?=[a-z][A-Z])"))
+end
+
+@show NamingConventions.convert(CamelCase, ReversePascalCase, "camelCase") # "cAMELcASE"
+@show NamingConventions.convert(SnakeCase, ReversePascalCase, "snake_case") # "sNAKEcASE"
 ```
