@@ -16,6 +16,8 @@ This package provides a set of functions to convert between different naming con
 - SCREAMING_SNAKE_CASE
 - snake_case
 
+Also, it is possible to create custom naming conventions by defining a new type that implements the `AbstractNamingConvention` interface.
+
 ## Getting Started
 
 ### Installation
