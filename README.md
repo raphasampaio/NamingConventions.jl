@@ -15,7 +15,7 @@ NamingConventions.jl is a lightweight and flexible Julia package that facilitate
 - `ScreamingSnakeCase`: e.g., YOU_TUBE
 - `SnakeCase`: e.g., you_tube
 
-The flexibility of this package lies in its extensibility. By implementing your own encoding and decoding logic, you can create tailored naming conventions that fit your specific needs. All you need to do is define a new type that inherits from `AbstractNamingConvention` and implement the encode and decode functions.
+The flexibility of this package lies in its extensibility. By implementing your own encoding and decoding logic, you can create tailored naming conventions that fit your specific needs. All you need to do is define a new type that inherits from `AbstractNamingConvention` and implement the `encode` and `decode` functions.
 
 ## Getting Started
 
