@@ -1,6 +1,6 @@
 name = "NamingConventions"
 uuid = "d2ef9726-cd01-476d-83ec-59819e6084ab"
-version = "0.1.0"
+version = "0.1.1"
 
 [deps]
 

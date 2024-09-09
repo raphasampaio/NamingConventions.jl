@@ -1,9 +1,13 @@
+struct DecodingError <: Exception
+    msg::String
+end
+
 function decode(::Type{CamelCase}, s::AbstractString)::Vector{String}
     return lowercase.(split(s, r"(?<=[a-z])(?=[A-Z])"))
 end
 
 function decode(::Type{FlatCase}, s::AbstractString)::Vector{String}
-    return lowercase.(split(s, ' '))
+    throw(DecodingError("FlatCase cannot be decoded"))
 end
 
 function decode(::Type{KebabCase}, s::AbstractString)::Vector{String}

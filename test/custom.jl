@@ -10,7 +10,7 @@ end
 
 function test_custom_case()
     @test NamingConventions.convert(CamelCase, ReversePascalCase, "camelCase") == "cAMELcASE"
-    @test NamingConventions.convert(FlatCase, ReversePascalCase, "flat case") == "fLATcASE"
+    @test NamingConventions.encode(ReversePascalCase, ["flat", "case"]) == "fLATcASE"
     @test NamingConventions.convert(KebabCase, ReversePascalCase, "kebab-case") == "kEBABcASE"
     @test NamingConventions.convert(PascalCase, ReversePascalCase, "PascalCase") == "pASCALcASE"
     @test NamingConventions.convert(ReversePascalCase, ReversePascalCase, "rEVERSEpASCALcASE") == "rEVERSEpASCALcASE"
