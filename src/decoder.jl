@@ -5,6 +5,7 @@ end
 function Base.showerror(io::IO, err::DecodingError)
     print(io, "DecodingError: ")
     print(io, err.msg)
+    return nothing
 end
 
 function decode(::Type{CamelCase}, s::AbstractString)::Vector{String}
