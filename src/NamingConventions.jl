@@ -7,6 +7,7 @@ include("convert.jl")
 
 export
     decode,
+    DecodingError,
     encode,
     AbstractNamingConvention,
     CamelCase,
