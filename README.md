@@ -59,10 +59,10 @@ function NamingConventions.decode(::Type{ReversePascalCase}, s::AbstractString)
     return lowercase.(split(s, r"(?<=[A-Z])(?=[a-z])|(?<=[a-z])(?=[a-z][A-Z])"))
 end
 
-# convert from camelCase to ReversePascalCase
+# convert from camelCase to rEVERSEpASCALcASE
 @show NamingConventions.convert(CamelCase, ReversePascalCase, "camelCase") # output: "cAMELcASE"
 
-# convert from snake_case to ReversePascalCase
+# convert from snake_case to rEVERSEpASCALcASE
 @show NamingConventions.convert(SnakeCase, ReversePascalCase, "snake_case") # output: "sNAKEcASE"
 ```
 
