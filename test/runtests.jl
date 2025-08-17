@@ -57,7 +57,8 @@ function test_screaming_snake_case()
     @test NamingConventions.encode(ScreamingSnakeCase, ["flat", "case"]) == "FLAT_CASE"
     @test NamingConventions.convert(KebabCase, ScreamingSnakeCase, "kebab-case") == "KEBAB_CASE"
     @test NamingConventions.convert(PascalCase, ScreamingSnakeCase, "PascalCase") == "PASCAL_CASE"
-    @test NamingConventions.convert(ScreamingSnakeCase, ScreamingSnakeCase, "SCREAMING_SNAKE_CASE") == "SCREAMING_SNAKE_CASE"
+    @test NamingConventions.convert(ScreamingSnakeCase, ScreamingSnakeCase, "SCREAMING_SNAKE_CASE") ==
+          "SCREAMING_SNAKE_CASE"
     @test NamingConventions.convert(SnakeCase, ScreamingSnakeCase, "snake_case") == "SNAKE_CASE"
 
     return nothing

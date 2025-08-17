@@ -14,7 +14,8 @@ function test_custom_case()
     @test NamingConventions.convert(KebabCase, ReversePascalCase, "kebab-case") == "kEBABcASE"
     @test NamingConventions.convert(PascalCase, ReversePascalCase, "PascalCase") == "pASCALcASE"
     @test NamingConventions.convert(ReversePascalCase, ReversePascalCase, "rEVERSEpASCALcASE") == "rEVERSEpASCALcASE"
-    @test NamingConventions.convert(ScreamingSnakeCase, ReversePascalCase, "SCREAMING_SNAKE_CASE") == "sCREAMINGsNAKEcASE"
+    @test NamingConventions.convert(ScreamingSnakeCase, ReversePascalCase, "SCREAMING_SNAKE_CASE") ==
+          "sCREAMINGsNAKEcASE"
     @test NamingConventions.convert(SnakeCase, ReversePascalCase, "snake_case") == "sNAKEcASE"
 
     return nothing
