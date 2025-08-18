@@ -1,3 +1,8 @@
+module TestCustomCase
+
+using NamingConventions
+using Test
+
 struct ReversePascalCase <: AbstractNamingConvention end
 
 function NamingConventions.encode(::Type{ReversePascalCase}, v::AbstractVector{<:AbstractString})::String
@@ -8,7 +13,7 @@ function NamingConventions.decode(::Type{ReversePascalCase}, s::AbstractString):
     return lowercase.(split(s, r"(?<=[A-Z])(?=[a-z])|(?<=[a-z])(?=[a-z][A-Z])"))
 end
 
-function test_custom_case()
+@testset "Custom Case" begin
     @test NamingConventions.convert(CamelCase, ReversePascalCase, "camelCase") == "cAMELcASE"
     @test NamingConventions.encode(ReversePascalCase, ["flat", "case"]) == "fLATcASE"
     @test NamingConventions.convert(KebabCase, ReversePascalCase, "kebab-case") == "kEBABcASE"
@@ -17,6 +22,6 @@ function test_custom_case()
     @test NamingConventions.convert(ScreamingSnakeCase, ReversePascalCase, "SCREAMING_SNAKE_CASE") ==
           "sCREAMINGsNAKEcASE"
     @test NamingConventions.convert(SnakeCase, ReversePascalCase, "snake_case") == "sNAKEcASE"
+end
 
-    return nothing
 end
