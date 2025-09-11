@@ -22,7 +22,7 @@ The flexibility of this package lies in its extensibility. By implementing your 
 ### Installation
 
 ```julia
-julia> ] add NamingConventions
+pkg> add NamingConventions
 ```
 
 ### Example 1: Converting Between Naming Conventions
